@@ -1,31 +1,314 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>SVG2EMF</class>
+ <widget class="QMainWindow" name="SVG2EMF">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>470</width>
+    <height>325</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <property name="minimumSize">
+   <size>
+    <width>470</width>
+    <height>325</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>SVG2EMF © Dr. GAO, Siyu</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QGridLayout" name="gLayout_folders">
+      <item row="1" column="2">
+       <widget class="QPushButton" name="btn_browse_svg">
+        <property name="text">
+         <string>Browse</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="ledt_svg_dir"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lbl_emf_dir">
+        <property name="font">
+         <font>
+          <family>Helvetica</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;EMF folder&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lbl_svg_dir">
+        <property name="font">
+         <font>
+          <family>Helvetica</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SVG folder&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="ledt_emf_dir"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QPushButton" name="btn_browse_emf">
+        <property name="text">
+         <string>Browse</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="ledt_inkscape_dir"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lbl_inkscape_dir">
+        <property name="font">
+         <font>
+          <family>Helvetica</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Inkscape folder&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="btn_browse_inkscape">
+        <property name="text">
+         <string>Browse</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="vLayout">
+      <item>
+       <widget class="QCheckBox" name="checkBox">
+        <property name="font">
+         <font>
+          <family>Helvetica</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Open EMF folder on end</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="progressBar">
+        <property name="font">
+         <font>
+          <family>Helvetica</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="hLayout_btn">
+      <item>
+       <widget class="QPushButton" name="btn_exit">
+        <property name="styleSheet">
+         <string notr="true">font: 75 9pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Exit</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_open_svg">
+        <property name="styleSheet">
+         <string notr="true">font: 75 9pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Open SVG folder</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_open_emf">
+        <property name="styleSheet">
+         <string notr="true">font: 75 9pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Open EMF folder</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_go">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 0, 0);
+font: 75 9pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Go</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="lbl_copyright">
+      <property name="baseSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Unicode MS</family>
+       </font>
+      </property>
+      <property name="locale">
+       <locale language="English" country="UnitedKingdom"/>
+      </property>
+      <property name="text">
+       <string>© Dr.GAO, Siyu; 2018
+siyu.gao@outlook.com</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>470</width>
      <height>26</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="act_file_go"/>
+    <addaction name="act_file_exit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="act_help_doct"/>
+    <addaction name="act_help_about"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="act_file_exit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="act_help_doct">
+   <property name="text">
+    <string>Documentation</string>
+   </property>
+  </action>
+  <action name="act_help_about">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="act_file_go">
+   <property name="text">
+    <string>Go</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
+  </action>
  </widget>
+ <tabstops>
+  <tabstop>ledt_inkscape_dir</tabstop>
+  <tabstop>btn_browse_inkscape</tabstop>
+  <tabstop>ledt_svg_dir</tabstop>
+  <tabstop>btn_browse_svg</tabstop>
+  <tabstop>ledt_emf_dir</tabstop>
+  <tabstop>btn_browse_emf</tabstop>
+  <tabstop>btn_go</tabstop>
+  <tabstop>btn_open_emf</tabstop>
+  <tabstop>btn_open_svg</tabstop>
+  <tabstop>btn_exit</tabstop>
+ </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>act_file_exit</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>SVG2EMF</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>234</x>
+     <y>120</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_exit</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>SVG2EMF</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>190</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>234</x>
+     <y>120</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
