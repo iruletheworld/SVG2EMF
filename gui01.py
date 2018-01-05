@@ -265,6 +265,22 @@ class Ui_SVG2EMF(object):
         self.str_svg_dir        = self.ledt_svg_dir.text()
         self.str_emf_dir        = self.ledt_emf_dir.text()
 
+    def check_dir_exist(self):
+
+        self.update_dir()
+
+        bool_inkscape_dir = os.path.isdir(self.str_inkscape_dir)
+
+        bool_svg_dir = os.path.isdir(self.str_svg_dir)
+
+        bool_emf_dir = os.path.isdir(self.str_emf_dir)
+
+        list_temp = [bool_inkscape_dir, bool_svg_dir, bool_emf_dir]
+
+        bool_dir_exist = all(x == True for x in list_temp)
+
+        return bool_dir_exist
+
     def search_svg(self):
 
         self.update_dir()
@@ -287,22 +303,40 @@ class Ui_SVG2EMF(object):
 
         print(gsyIO.date_time_now() + 'Converting...')
 
-        self.update_dir()
+        bool_dir_exist = self.check_dir_exist()
 
-        list_svg_file = self.search_svg()
+        if bool_dir_exist == False:
 
-        # if the list if empty
-        if not list_svg_file:
+            gsyIO.prompt_msg(str_title='Folder not found',
+                             str_msg='At least one folder not found',
+                             str_type='err')
 
-            gsyIO.prompt_msg(str_title='SVG not found', str_msg='No SVG file found', str_type='err')
+        else:
 
-            return False
+            str_inkscape = '"' + self.str_inkscape_dir + os.sep + 'inkscape' + '"'
 
-        if list_svg_file != None:
+            list_svg_file_path = self.search_svg()
 
-            for item in list_svg_file:
+            # if the list if empty
+            if not list_svg_file_path:
 
-                print(item)
+                gsyIO.prompt_msg(str_title='SVG not found',
+                                 str_msg='No SVG file found',
+                                 str_type='err')
+
+                return False
+
+            if list_svg_file_path != None:
+
+                for item in list_svg_file_path:
+
+                    str_svg_file_path = item
+
+                    index = str_svg_file_path.rfind(os.sep)
+
+                    str_svg_filename = str_svg_file_path[(index + 1):]
+
+                    print(str_svg_filename)
 
 
 

@@ -84,7 +84,11 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="ledt_inkscape_dir"/>
+       <widget class="QLineEdit" name="ledt_inkscape_dir">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="lbl_inkscape_dir">

@@ -4,15 +4,21 @@ Created on Thu Jan  4 13:06:32 2018
 
 """
 
-import glob
+import subprocess
 
-str_pattern = "C:/Users/306235/Documents/_Temp/**/*.svg"
+subprocess.run(r'"C:\Program Files\Inkscape\inkscape" C:\Users\306235\Documents\_Temp\SVG_to_EMF\test_time.svg --export-emf=C:\Users\306235\Documents\_Temp\SVG_to_EMF\test_time.emf', shell=True)
 
-list_temp = glob.glob(str_pattern, recursive=True)
+subprocess.run(r'inkscape C:\Users\306235\Documents\_Temp\SVG_to_EMF\test_polar.svg --export-emf=C:\Users\306235\Documents\_Temp\SVG_to_EMF\test_polar.emf', shell=True)
 
-for item in list_temp:
-
-    print(item)
+#import glob
+#
+#str_pattern = "C:/Users/306235/Documents/_Temp/**/*.svg"
+#
+#list_temp = glob.glob(str_pattern, recursive=True)
+#
+#for item in list_temp:
+#
+#    print(item)
 
 # import os
 
