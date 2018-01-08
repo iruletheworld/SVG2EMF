@@ -7,12 +7,18 @@
 # WARNING! All changes made in this file will be lost!
 
 import glob
+import numpy as np
 import os
+import subprocess
+import time
 
 import gsyIO
 import gsyINI
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+CONST_EXPT_EMF = '--export-emf='
+CONST_INI_FILENAME = 'gsySVG2EMF.ini'
 
 class Ui_SVG2EMF(object):
 
@@ -173,6 +179,8 @@ class Ui_SVG2EMF(object):
         
         self.btn_go.clicked.connect(self.convert)
 
+        self.read_setting()
+
         QtCore.QMetaObject.connectSlotsByName(SVG2EMF)
 
         SVG2EMF.setTabOrder(self.ledt_inkscape_dir, self.btn_browse_inkscape)
@@ -209,11 +217,37 @@ class Ui_SVG2EMF(object):
         self.act_file_go.setText(_translate("SVG2EMF", "Go"))
         self.act_file_go.setShortcut(_translate("SVG2EMF", "Ctrl+G"))
 
+    def check_inkscape_bin(self, str_inkscape_dir):
+
+        str_pattern = str_inkscape_dir + os.sep + 'inkscape*'
+
+        list_temp = glob.glob(str_pattern, recursive=False)
+
+        if not list_temp:
+
+            return False
+
+        else:
+
+            return True
+
     def get_inkscape_dir(self):
 
         str_temp = gsyIO.get_dir(str_title='Select the Inkscape installation folder')
 
-        self.ledt_inkscape_dir.setText(str_temp)
+        bool_temp = self.check_inkscape_bin(str_temp)
+
+        if bool_temp == True:
+
+            self.ledt_inkscape_dir.setText(str_temp)
+
+        else:
+
+            gsyIO.prompt_msg(str_title='Inkscape binary not found',
+                             str_msg='Inkscape binary not found',
+                             str_type='err')
+
+            self.ledt_inkscape_dir.setText('')
 
     def get_svg_dir(self):
 
@@ -230,8 +264,6 @@ class Ui_SVG2EMF(object):
     def open_emf_folder(self):
 
         str_folder_path = self.ledt_emf_dir.text()
-
-        # print(str_folder_path)
 
         if os.path.isdir(str_folder_path) == False:
 
@@ -285,8 +317,6 @@ class Ui_SVG2EMF(object):
 
         self.update_dir()
 
-        # print(str_svg_dir)
-
         if os.path.isdir(self.str_svg_dir) == False:
 
             return None
@@ -303,6 +333,12 @@ class Ui_SVG2EMF(object):
 
         print(gsyIO.date_time_now() + 'Converting...')
 
+        int_count = 0
+
+        dbl_progress = 0
+
+        self.progressBar.setValue(dbl_progress)
+
         bool_dir_exist = self.check_dir_exist()
 
         if bool_dir_exist == False:
@@ -317,7 +353,7 @@ class Ui_SVG2EMF(object):
 
             list_svg_file_path = self.search_svg()
 
-            # if the list if empty
+            # if the list is empty
             if not list_svg_file_path:
 
                 gsyIO.prompt_msg(str_title='SVG not found',
@@ -328,17 +364,141 @@ class Ui_SVG2EMF(object):
 
             if list_svg_file_path != None:
 
+                self.save_setting()
+
+                int_svg_file_count = len(list_svg_file_path)
+
                 for item in list_svg_file_path:
 
                     str_svg_file_path = item
 
+                    # reverse find first path separator
                     index = str_svg_file_path.rfind(os.sep)
 
+                    # get the filename (only) of the SVG file
                     str_svg_filename = str_svg_file_path[(index + 1):]
 
-                    print(str_svg_filename)
+                    # find the "." of the SVG extension
+                    index = str_svg_filename.rfind('.')
+
+                    # replace the "svg" for "emf"
+                    str_emf_filename = str_svg_filename[:(index + 1)] + 'emf'
+
+                    # form the full path for the EMF file
+                    str_emf_file_path = os.path.join(self.str_emf_dir, str_emf_filename)
+
+                    # form the shell command
+                    str_cmd = (str_inkscape + ' ' 
+                               + '"' + str_svg_file_path + '"' + ' ' 
+                               + '"' + CONST_EXPT_EMF + str_emf_file_path + '"')
+
+                    obj = subprocess.run(str_cmd, shell=True, timeout=600)
+
+                    # progress bar control
+                    int_count += 1
+
+                    dbl_progress = float(int_count) / float(int_svg_file_count) * 100.0
+
+                    str_info = ('Converting ' + str(int_count) + ' of ' + str(int_svg_file_count)
+                                + ', ' + '{:.2f}'.format(dbl_progress) + r'%')
+
+                    print(str_info)
+
+                    self.progressBar.setValue(dbl_progress)
+
+                # open EMF folder on end
+                if self.checkBox.isChecked() == True:
+
+                    self.open_emf_folder()
+
+                else:
+
+                    pass
+
+                print(gsyIO.date_time_now() + 'Conversion complete')
+
+    def save_setting(self):
+
+        print(gsyIO.date_time_now() + 'Saving settings...')
+
+        str_setting = '[User settings]\n'
+
+        str_setting += 'ledt_inkscape_dir=' + self.ledt_inkscape_dir.text() + '\n'
+
+        str_setting += 'ledt_svg_dir=' + self.ledt_svg_dir.text() + '\n'
+
+        str_setting += 'ledt_emf_dir=' + self.ledt_emf_dir.text() + '\n'
+
+        str_setting += 'checkBox=' + str(self.checkBox.isChecked())
+
+        str_ini_file_path = os.path.join(os.getcwd(), CONST_INI_FILENAME)
+
+        gsyINI.write_ini(str_ini_file_path, str_setting)
 
 
+    def read_setting(self):
+
+        str_ini_file_path = os.path.join(os.getcwd(), CONST_INI_FILENAME)
+
+        bool_ini_exist, str_setting = gsyINI.read_ini(str_ini_file_path)
+
+        if bool_ini_exist == False:
+
+            print(gsyIO.date_time_now() + 'Read user setting failed.')
+
+            return False
+
+        else:
+
+            pass
+
+        try:
+
+            # get rid of the line breaks
+            str_setting = [item.strip('\n') for item in str_setting]
+
+            str_setting = [item.strip('\r') for item in str_setting]
+
+            list_widget = [self.ledt_inkscape_dir, self.ledt_svg_dir,
+                           self.ledt_emf_dir]
+
+            for item in str_setting:
+
+                index = item.find('=')
+
+                str_temp_setting = item[:index]
+
+                if str_temp_setting == 'checkBox':
+
+                    str_temp = item[(index + 1):]
+
+                    if str_temp == 'True':
+
+                        self.checkBox.setChecked(True)
+
+                    else:
+
+                        self.checkBox.setChecked(False)
+
+                for j in list_widget:
+
+                    if str_temp_setting == j.objectName():
+
+                        j.setText(item[(index + 1):])
+
+                        list_widget.pop(list_widget.index(j))
+
+                        break
+
+                    else:
+
+                        pass
+
+        except:
+
+            print(gsyIO.date_time_now() + 'Read user setting failed.')
+
+            return False
 
 
 if __name__ == "__main__":
