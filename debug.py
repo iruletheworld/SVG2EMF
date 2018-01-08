@@ -4,15 +4,27 @@ Created on Thu Jan  4 13:06:32 2018
 
 """
 
-import subprocess
+import gsyIO
 
-subprocess.run(r'"C:\Program Files\Inkscape\inkscape" C:\Users\306235\Documents\_Temp\SVG_to_EMF\test_time.svg --export-emf=C:\Users\306235\Documents\_Temp\SVG_to_EMF\test_time.emf', shell=True)
+str_dir = 'C:/Users'
 
-subprocess.run(r'inkscape C:\Users\306235\Documents\_Temp\SVG_to_EMF\test_polar.svg --export-emf=C:\Users\306235\Documents\_Temp\SVG_to_EMF\test_polar.emf', shell=True)
+str_pattern = 'gsyBio.rst'
+
+list_temp = gsyIO.search_file(str_dir_path=str_dir, str_pattern=str_pattern, bool_recursive=True)
+
+print(list_temp)
+
+# =============================================================================
+# import subprocess
+# 
+# subprocess.run(r'"C:\Program Files\Inkscape\inkscape" C:\Users\\Documents\_Temp\SVG_to_EMF\test_time.svg --export-emf=C:\Users\\Documents\_Temp\SVG_to_EMF\test_time.emf', shell=True)
+# 
+# subprocess.run(r'inkscape C:\Users\\Documents\_Temp\SVG_to_EMF\test_polar.svg --export-emf=C:\Users\\Documents\_Temp\SVG_to_EMF\test_polar.emf', shell=True)
+# =============================================================================
 
 #import glob
 #
-#str_pattern = "C:/Users/306235/Documents/_Temp/**/*.svg"
+#str_pattern = "C:/Users/Documents/_Temp/**/*.svg"
 #
 #list_temp = glob.glob(str_pattern, recursive=True)
 #
@@ -30,11 +42,15 @@ subprocess.run(r'inkscape C:\Users\306235\Documents\_Temp\SVG_to_EMF\test_polar.
 
 # import glob
 
-# str_pattern = "C:/Users//Documents/_Temp/**/*.svg"
+# str_pattern = "C:/Users/**/*.py"
 
-# for item in glob.iglob(str_pattern, recursive=True):
+# list_temp = glob.glob(str_pattern, recursive=True)
 
-#     print(item)
+# print(list_temp)
+
+#for item in glob.iglob(str_pattern, recursive=True):
+#
+#    print(item)
 
 #from  tkinter import *
 #import tkinter, tkconstants, tkFileDialog

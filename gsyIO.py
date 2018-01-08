@@ -17,6 +17,7 @@ Change Log
     + Version : 0.2.1
         - Added "get_dir"
         - Added "open_folder"
+        - Added "search_file"
 
     + Version : 0.2.0
         - Added "data_time_now"
@@ -38,6 +39,7 @@ List of functions
 * save_image_gui_
 * save_txt_
 * save_txt_on_event_
+* search_file_
 * search_file_and_start_
 
 Function definitions
@@ -907,4 +909,61 @@ def open_folder(str_folder_path):
 # </Function: open a folder in explorer>
 # =============================================================================
 
-# def search_file
+
+# =============================================================================
+# <Function: search file according to pattern>
+# =============================================================================
+def search_file(str_dir_path, str_pattern, bool_recursive=True):
+    """
+    .. _search_file :
+        
+    This function opens the folder in explorer.
+
+    Parameters
+    ----------
+    str_folder_path : str
+        The folder path.
+
+    Returns
+    -------    
+    None
+    
+    .. csv-table:: Frozen Delights!
+        :header: "Treat", "Quantity", "Description"
+        :widths: 15, 10, 30
+
+        "Albatross", 2.99, "On a stick!"
+        "Popcorn", 1.99, "Straight from the oven"
+    
+    Examples
+    --------
+    .. code:: python
+    
+        import gsyIO
+
+        str_folder = 'c:/temp'
+
+        gsyIO.open_folder(str_folder)
+    """
+
+    # check if the selected directory exists
+    bool_temp = os.path.isdir(str_dir_path)
+
+    # if directory not exists, return False
+    if bool_temp == False:
+
+        return False
+
+    else:
+
+        pass
+
+    # form search pattern
+    str_pattern = str_dir_path + os.sep + '**' + os.sep + str_pattern
+
+    list_temp = glob.glob(str_pattern, recursive=bool_recursive)
+
+    return list_temp
+# =============================================================================
+# <Function: search file according to pattern>
+# =============================================================================
