@@ -8,7 +8,7 @@ Author : 高斯羽 博士 (Dr. GAO, Siyu)
 
 Version : 0.2.1
 
-Last Modified : 2018-01-04
+Last Modified : 2018-01-08
 
 Change Log
 ----------------------
@@ -31,6 +31,7 @@ List of functions
 
 * date_time_now_
 * get_dir_
+* open_folder_
 * prompt_msg_
 * save_csv_
 * save_csv_gui_
@@ -874,6 +875,30 @@ def get_dir(str_initialdir=os.getcwd(), str_title='Select a folder'):
 # <Function: open a folder in explorer>
 # =============================================================================
 def open_folder(str_folder_path):
+    """
+    .. _open_folder :
+        
+    This function opens the folder in explorer.
+
+    Parameters
+    ----------
+    str_folder_path : str
+        The folder path.
+
+    Returns
+    -------    
+    None
+    
+    Examples
+    --------
+    .. code:: python
+    
+        import gsyIO
+
+        str_folder = 'c:/temp'
+
+        gsyIO.open_folder(str_folder)
+    """
 
     # subprocess.Popen('explorer /select,' + '"' + str_folder_path + '"', shell=True)
 
