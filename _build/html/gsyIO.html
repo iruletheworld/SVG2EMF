@@ -1,0 +1,818 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Library for custom IOs : gsyIO &mdash; SVG2EMF 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="SVG2EMF 0.1.0 documentation" href="index.html"/>
+        <link rel="next" title="3. Library for INI files : gsyINI" href="gsyINI.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> SVG2EMF
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gsySvg2EmfMain.html">1. Main GUI : gsySvg2EmfMain</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Library for custom IOs : gsyIO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#change-log">2.1. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-functions">2.2. List of functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-definitions">2.3. Function definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gsyINI.html">3. Library for INI files : gsyINI</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SVG2EMF</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>2. Library for custom IOs : gsyIO</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/gsyIO.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-gsyIO">
+<span id="library-for-custom-ios-gsyio"></span><h1>2. Library for custom IOs : gsyIO<a class="headerlink" href="#module-gsyIO" title="Permalink to this headline">¶</a></h1>
+<p>Custom module for genreal IO.</p>
+<p>Module Name : gsyIO</p>
+<p>Author : 高斯羽 博士 (Dr. GAO, Siyu)</p>
+<p>Version : 0.2.1</p>
+<p>Last Modified : 2018-01-08</p>
+<div class="section" id="change-log">
+<h2>2.1. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Notable changes:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Version <span class="classifier-delimiter">:</span> <span class="classifier">0.2.1</span></dt>
+<dd><ul class="first last">
+<li>Added “get_dir”</li>
+<li>Added “open_folder”</li>
+<li>Added “search_file”</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Version <span class="classifier-delimiter">:</span> <span class="classifier">0.2.0</span></dt>
+<dd><ul class="first last">
+<li>Added “data_time_now”</li>
+<li>Added “prompt_msg”</li>
+<li>Added “save_csv”</li>
+<li>Added “save_csv_gui”</li>
+<li>Added “save_image_gui”</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="list-of-functions">
+<h2>2.2. List of functions<a class="headerlink" href="#list-of-functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="#date-time-now">date_time_now</a></li>
+<li><a class="reference internal" href="#get-dir">get_dir</a></li>
+<li><a class="reference internal" href="#open-folder">open_folder</a></li>
+<li><a class="reference internal" href="#prompt-msg">prompt_msg</a></li>
+<li><a class="reference internal" href="#save-csv">save_csv</a></li>
+<li><a class="reference internal" href="#save-csv-gui">save_csv_gui</a></li>
+<li><a class="reference internal" href="#save-image-gui">save_image_gui</a></li>
+<li><a class="reference internal" href="#save-txt">save_txt</a></li>
+<li><a class="reference internal" href="#save-txt-on-event">save_txt_on_event</a></li>
+<li><a class="reference internal" href="#search-file">search_file</a></li>
+<li><a class="reference internal" href="#search-file-and-start">search_file_and_start</a></li>
+</ul>
+</div>
+<div class="section" id="function-definitions">
+<h2>2.3. Function definitions<a class="headerlink" href="#function-definitions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="gsyIO.date_time_now">
+<code class="descclassname">gsyIO.</code><code class="descname">date_time_now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.date_time_now" title="Permalink to this definition">¶</a></dt>
+<dd><p id="date-time-now">Return the system date and time as a string.</p>
+<p>Return format: ‘yyyy-mm-dd, HH:MM:SS:’</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>None</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>str_date_time</strong> : str</p>
+<blockquote class="last">
+<div><p>Formatted system date time string in ‘yyyy-mm-dd, HH:MM:SS:’. 
+The last colon is intended for printing to the console (or making logs).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">date_time_now</span><span class="p">()</span>
+<span class="go">&#39;2017-11-20, 15:14:42:&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.get_dir">
+<code class="descclassname">gsyIO.</code><code class="descname">get_dir</code><span class="sig-paren">(</span><em>str_initialdir='C:\\Users\\306235\\Documents\\PY\\SVG2EMF'</em>, <em>str_title='Select a folder'</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.get_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p id="get-dir">This function is a wrapper for tk’s askdirectory.</p>
+<p>This function prompts a directory select dialogue and let the user to 
+select a folder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>str_initialdir</strong> : str</p>
+<blockquote>
+<div><p>Initial directory. The default is the current working directory (cwd).</p>
+</div></blockquote>
+<p><strong>str_title</strong> : str</p>
+<blockquote>
+<div><p>The title of the dialogue window.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>str_dir</strong> : str</p>
+<blockquote class="last">
+<div><p>The selected directory.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gsyIO</span>
+
+<span class="n">str_folder</span> <span class="o">=</span> <span class="n">gsyIO</span><span class="o">.</span><span class="n">get_dir</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The selected folder is : &#39;</span> <span class="o">+</span> <span class="n">str_folder</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.open_folder">
+<code class="descclassname">gsyIO.</code><code class="descname">open_folder</code><span class="sig-paren">(</span><em>str_folder_path</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.open_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p id="open-folder">This function opens the folder in explorer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>str_folder_path</strong> : str</p>
+<blockquote>
+<div><p>The folder path.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gsyIO</span>
+
+<span class="n">str_folder</span> <span class="o">=</span> <span class="s1">&#39;c:/temp&#39;</span>
+
+<span class="n">gsyIO</span><span class="o">.</span><span class="n">open_folder</span><span class="p">(</span><span class="n">str_folder</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.prompt_msg">
+<code class="descclassname">gsyIO.</code><code class="descname">prompt_msg</code><span class="sig-paren">(</span><em>str_title</em>, <em>str_msg</em>, <em>str_type='info'</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.prompt_msg" title="Permalink to this definition">¶</a></dt>
+<dd><p id="prompt-msg">This function is a wrapper for tk’s three different message boxes.</p>
+<p>This function prompts a message box with the message given.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>str_title</strong> : str</p>
+<blockquote>
+<div><p>Title of the message box.</p>
+</div></blockquote>
+<p><strong>str_msg</strong> : str</p>
+<blockquote>
+<div><p>The message to be shown.</p>
+</div></blockquote>
+<p><strong>str_type</strong> : str, default = “info”</p>
+<blockquote>
+<div><p>Type of the message box.</p>
+<ul class="simple">
+<li>“info” = information message box. This is the default value.</li>
+<li>“err” = error message box</li>
+<li>“warn” = warning message box</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">import</span> <span class="nn">tkinter.messagebox</span> <span class="k">as</span> <span class="nn">msgbox</span>
+
+<span class="kn">import</span> <span class="nn">gsyIO</span>
+
+<span class="n">gsyIO</span><span class="o">.</span><span class="n">prompt_msg</span><span class="p">(</span><span class="s1">&#39;message title&#39;</span><span class="p">,</span> <span class="s1">&#39;message body&#39;</span><span class="p">,</span> <span class="s1">&#39;err&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.save_csv">
+<code class="descclassname">gsyIO.</code><code class="descname">save_csv</code><span class="sig-paren">(</span><em>list_header</em>, <em>list_data</em>, <em>str_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.save_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p id="save-csv">This function combines the given headers and the given data and then writes
+them into the given CSV file path.</p>
+<p>This function uses the “csv” module.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>list_header</strong> : list</p>
+<blockquote>
+<div><p>The headers for the data sets.</p>
+</div></blockquote>
+<p><strong>list_data</strong> : list</p>
+<blockquote>
+<div><p>The data sets. Each list element can be a 1-D list.</p>
+</div></blockquote>
+<p><strong>str_file_path</strong> : str</p>
+<blockquote>
+<div><p>The str file full path.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+<blockquote>
+<div><p>Returns True if file saved with no exception. 
+No return if exceptions. Instead, the exceptions would be raised.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong></p>
+<blockquote>
+<div><p>If the number of headers is not the same as the number of data sets.</p>
+</div></blockquote>
+<p><strong>ValueError</strong></p>
+<blockquote>
+<div><p>If the lengths of all data sets are not the same.</p>
+</div></blockquote>
+<p><strong>OSError</strong></p>
+<blockquote class="last">
+<div><p>If opening the CSV for writing fail or data write to the CSV file fail.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>To transpose rows to columns, use the “zip” function.</p>
+<div class="line-block">
+<div class="line">See: </div>
+<div class="line"><a class="reference external" href="https://goo.gl/SknzT8">https://goo.gl/SknzT8</a></div>
+<div class="line"><a class="reference external" href="https://goo.gl/qqWV8b">https://goo.gl/qqWV8b</a></div>
+</div>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">temp_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">list_data</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="kn">from</span> <span class="nn">gsyIO</span> <span class="k">import</span> <span class="n">save_csv</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">38</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;data1&#39;</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">]</span>
+
+<span class="n">data_set</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="p">,</span> <span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">]</span>
+
+<span class="n">str_file_path</span> <span class="o">=</span> <span class="s1">&#39;c:/temp/test.csv&#39;</span>
+
+<span class="n">bool_saved</span> <span class="o">=</span> <span class="n">save_csv</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">data_set</span><span class="p">,</span> <span class="n">str_file_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.save_csv_gui">
+<code class="descclassname">gsyIO.</code><code class="descname">save_csv_gui</code><span class="sig-paren">(</span><em>list_header</em>, <em>list_data</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.save_csv_gui" title="Permalink to this definition">¶</a></dt>
+<dd><p id="save-csv-gui">This function is a gui wrapper for “save_csv”.</p>
+<p>This function prompts a file save dialogue to allow the user to select the 
+directory and filename.</p>
+<p>This function would then return the full path to “save_csv” to allow saving CSV.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>list_header</strong> : list</p>
+<blockquote>
+<div><p>The headers for the data sets.</p>
+</div></blockquote>
+<p><strong>list_data</strong> : list</p>
+<blockquote>
+<div><p>The data sets. Each list element can be a 1-D list.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+<blockquote class="last">
+<div><p>Returns True if file saved with no exception. Returns False if exceptions.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">38</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;data1&#39;</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">]</span>
+
+<span class="n">data_set</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="p">,</span> <span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">]</span>
+
+<span class="n">save_csv_gui</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">data_set</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.save_image_gui">
+<code class="descclassname">gsyIO.</code><code class="descname">save_image_gui</code><span class="sig-paren">(</span><em>list_filetypes=[('Scalable Vector Graphics', '*.svg *.svgz'), ('Portable Network Graphics', '*.png'), ('Portable Document Format', '*.pdf'), ('Encapsulated Poscript', '*.eps'), ('Joint Photographic Experts Group', '*.jpeg *.jpg'), ('PGF code for LaTex', '*.pgf'), ('Postscript', '*.ps'), ('Raw RGBA bitmap', '*.raw *.rgba'), ('Tagged Image File Format', '*.tif *.tiff'), ('all files', '*.*')]</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.save_image_gui" title="Permalink to this definition">¶</a></dt>
+<dd><p id="save-image-gui">This function is a gui wrapper for getting the image full path. The actual
+implementation of image saving is up to you.</p>
+<p>This function prompts a file save dialogue to allow the user to select the 
+directory and filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>list_filetypes</strong> : list</p>
+<blockquote>
+<div><p>The list for image filetype filters.</p>
+<p>The default list is :</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">CONST_IMAGE_FILETER</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Scalable Vector Graphics&#39;</span><span class="p">,</span><span class="s1">&#39;*.svg *.svgz&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Portable Network Graphics&#39;</span><span class="p">,</span><span class="s1">&#39;*.png&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Portable Document Format&#39;</span><span class="p">,</span> <span class="s1">&#39;*.pdf&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Encapsulated Poscript&#39;</span><span class="p">,</span><span class="s1">&#39;*.eps&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Joint Photographic Experts Group&#39;</span><span class="p">,</span><span class="s1">&#39;*.jpeg *.jpg&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;PGF code for LaTex&#39;</span><span class="p">,</span><span class="s1">&#39;*.pgf&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Postscript&#39;</span><span class="p">,</span><span class="s1">&#39;*.ps&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Raw RGBA bitmap&#39;</span><span class="p">,</span><span class="s1">&#39;*.raw *.rgba&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Tagged Image File Format&#39;</span><span class="p">,</span><span class="s1">&#39;*.tif *.tiff&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;all files&#39;</span><span class="p">,</span><span class="s1">&#39;*.*&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>str_file_path</strong> : str</p>
+<blockquote class="last">
+<div><p>The full path of the image file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">38</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;data1&#39;</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">]</span>
+
+<span class="n">data_set</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="p">,</span> <span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">]</span>
+
+<span class="n">str_filename</span> <span class="o">=</span> <span class="n">save_csv_gui</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">data_set</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">str_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.save_txt">
+<code class="descclassname">gsyIO.</code><code class="descname">save_txt</code><span class="sig-paren">(</span><em>str_file_path</em>, <em>str_txt</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.save_txt" title="Permalink to this definition">¶</a></dt>
+<dd><p id="save-txt">This funciton saves the given string into the given file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>str_file_path</strong> : str</p>
+<blockquote>
+<div><p>The text file full path.</p>
+</div></blockquote>
+<p><strong>str_txt</strong> : str</p>
+<blockquote>
+<div><p>The string to be write into the text file.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+<blockquote class="last">
+<div><p>Returns True if read successful (no exception).
+Returns False on exception.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">bool_success</span> <span class="o">=</span> <span class="n">save_txt</span><span class="p">(</span><span class="n">str_file_path</span><span class="p">,</span> <span class="n">str_txt</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.save_txt_on_event">
+<code class="descclassname">gsyIO.</code><code class="descname">save_txt_on_event</code><span class="sig-paren">(</span><em>event</em>, <em>str_txt</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.save_txt_on_event" title="Permalink to this definition">¶</a></dt>
+<dd><p id="save-txt-on-event">This funciton calls the “save_txt” function to save the string into a text
+file.</p>
+<p>This function prompts file save dialogue to allow the user to interactively
+save the file.</p>
+<p>This function prompts messages to tell the user whether the save is successful
+or not.</p>
+<p>Reference for using “lambda” : <a class="reference external" href="https://goo.gl/zDmGPR">https://goo.gl/zDmGPR</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>event</strong> : event</p>
+<blockquote>
+<div><p>The event that triggers this function.</p>
+</div></blockquote>
+<p><strong>str_txt</strong> : str</p>
+<blockquote>
+<div><p>The string to be saved.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+<blockquote class="last">
+<div><p>Returns True if read successful (no exception). 
+Returns False on exception.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">button_save_help</span><span class="o">.</span><span class="n">on_clicked</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">save_txt_on_event</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">CONST_STR_HELP</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.search_file">
+<code class="descclassname">gsyIO.</code><code class="descname">search_file</code><span class="sig-paren">(</span><em>str_dir_path</em>, <em>str_pattern</em>, <em>bool_recursive=True</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.search_file" title="Permalink to this definition">¶</a></dt>
+<dd><p id="search-file">This function opens the folder in explorer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>str_folder_path</strong> : str</p>
+<blockquote>
+<div><p>The folder path.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None</p>
+<table border="1" class="last docutils" id="id1">
+<caption><span class="caption-text">Frozen Delights!</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">header:</th><td class="field-body">“Treat”</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>Quantity</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">widths:</th><td class="field-body">15</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>10</td>
+<td>30</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Albatross</td>
+<td>2.99</td>
+<td>On a stick!</td>
+</tr>
+<tr class="row-odd"><td>Popcorn</td>
+<td>1.99</td>
+<td>Straight from the oven</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gsyIO</span>
+
+<span class="n">str_folder</span> <span class="o">=</span> <span class="s1">&#39;c:/temp&#39;</span>
+
+<span class="n">gsyIO</span><span class="o">.</span><span class="n">open_folder</span><span class="p">(</span><span class="n">str_folder</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.search_file_and_start">
+<code class="descclassname">gsyIO.</code><code class="descname">search_file_and_start</code><span class="sig-paren">(</span><em>str_pattern</em>, <em>str_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.search_file_and_start" title="Permalink to this definition">¶</a></dt>
+<dd><p id="search-file-and-start">This funciton searchs for the given file according to the given pattern. 
+If the given file is found, this function would try to start the file with
+os default application.</p>
+<p>The search is recursive.</p>
+<p>This function uses “glob” for search.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">str_pattern</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="p">,</span> <span class="n">str_filename</span><span class="p">)):</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+        <span class="n">bool_found</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">break</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>str_pattern</strong> : str</p>
+<blockquote>
+<div><p>The pattern for searching. E.g.  ‘./**/*.html’</p>
+</div></blockquote>
+<p><strong>str_filename</strong> : str</p>
+<blockquote>
+<div><p>The filename of the file to be started with os default application.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+<blockquote class="last">
+<div><p>Returns True if file found. 
+Returns False file not found or on exception.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">bool_found</span> <span class="o">=</span> <span class="n">search_file_and_start</span><span class="p">(</span><span class="n">str_pattern</span><span class="p">,</span> <span class="n">str_doct_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gsyINI.html" class="btn btn-neutral float-right" title="3. Library for INI files : gsyINI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, GAO, Siyu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
