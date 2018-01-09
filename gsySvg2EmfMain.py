@@ -36,16 +36,54 @@ import glob
 import os
 import subprocess
 import time
+import tkinter as tk
+import tkinter.messagebox as msgbox
 
 import gsyIO
 import gsyINI
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from gsySvg2EmfAbout import Ui_About
+
 CONST_EXPT_EMF = '--export-emf='
+
 CONST_INI_FILENAME = 'gsySVG2EMF.ini'
 
+CONST_DOCT_FILENAME = 'index.html'
+
 class Ui_SVG2EMF(object):
+
+    def show_about(self):
+        '''
+        .. _show_about :
+
+        This method shows the "About" windows.
+
+        Parameters
+        ----------
+        self
+
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        .. code:: python
+
+            self.act_help_about.triggered.connect(self.show_about)
+        '''
+
+        self.window = QtWidgets.QMainWindow()
+
+        # create an instance of the UI_About class
+        self.ui = Ui_About()
+
+        self.ui.setupUi(self.window)
+
+        # show the window
+        self.window.show()
 
     def setupUi(self, SVG2EMF):
 
@@ -185,14 +223,20 @@ class Ui_SVG2EMF(object):
 
         self.retranslateUi(SVG2EMF)
 
-        # attributes, directories
+        # attributes----------------------------------------------------------#
+        # directories
         self.str_inkscape_dir = None
         self.str_svg_dir = None
         self.str_emf_dir = None
 
-        # connects
+        # connects------------------------------------------------------------#
+        # menu connects
         self.act_file_exit.triggered['bool'].connect(SVG2EMF.close)
         
+        self.act_help_doct.triggered.connect(self.start_doct)
+        self.act_help_about.triggered.connect(self.show_about)
+        
+        # button connects
         self.btn_browse_inkscape.clicked.connect(self.get_inkscape_dir)
         self.btn_browse_svg.clicked.connect(self.get_svg_dir)
         self.btn_browse_emf.clicked.connect(self.get_emf_dir)
@@ -204,7 +248,7 @@ class Ui_SVG2EMF(object):
         
         self.btn_go.clicked.connect(self.convert)
 
-        # read saved setting
+        # read saved setting--------------------------------------------------#
         self.read_setting()
 
         QtCore.QMetaObject.connectSlotsByName(SVG2EMF)
@@ -268,7 +312,7 @@ class Ui_SVG2EMF(object):
         """
 
         # form search pattern
-        str_pattern = str_inkscape_dir + os.sep + 'inkscape*'
+        str_pattern = str_inkscape_dir + os.sep + 'inkscape.exe'
 
         # search, if not, would return a empty list
         list_temp = glob.glob(str_pattern, recursive=False)
@@ -324,11 +368,13 @@ class Ui_SVG2EMF(object):
         # if not exists, prompt error message
         else:
 
-            gsyIO.prompt_msg(str_title='Inkscape binary not found',
-                             str_msg='Inkscape binary not found',
-                             str_type='err')
+            pass
 
-            self.ledt_inkscape_dir.setText('')
+            # gsyIO.prompt_msg(str_title='Inkscape binary not found',
+            #                  str_msg='Inkscape binary not found',
+            #                  str_type='err')
+
+            # self.ledt_inkscape_dir.setText('')
 
     def get_svg_dir(self):
         """
@@ -361,7 +407,13 @@ class Ui_SVG2EMF(object):
         str_temp = gsyIO.get_dir(str_title='Select the folder for SVG files')
 
         # set text to line edit
-        self.ledt_svg_dir.setText(str_temp)
+        if len(str_temp) != 0:
+
+            self.ledt_svg_dir.setText(str_temp)
+
+        else:
+
+            pass
 
     def get_emf_dir(self):
         """
@@ -394,7 +446,13 @@ class Ui_SVG2EMF(object):
         str_temp = gsyIO.get_dir(str_title='Select the folder to export EMF files')
 
         # set text to line edit
-        self.ledt_emf_dir.setText(str_temp)
+        if len(str_temp) != 0:
+
+            self.ledt_emf_dir.setText(str_temp)
+
+        else:
+
+            pass
 
     def open_emf_folder(self):
         """
@@ -637,89 +695,118 @@ class Ui_SVG2EMF(object):
                 return False
 
             else:
-                
-                # first part of the shell command
-                str_inkscape = '"' + self.str_inkscape_dir + os.sep + 'inkscape' + '"'
 
-                # search for SVG files
-                list_svg_file_path = self.search_svg()
+                bool_temp = self.check_inkscape_bin(self.str_inkscape_dir)
 
-                # if the list is empty
-                if not list_svg_file_path:
+                if bool_temp == True:
 
-                    gsyIO.prompt_msg(str_title='SVG not found',
-                                    str_msg='No SVG file found',
-                                    str_type='err')
+                    bool_go = True
 
-                    print(gsyIO.date_time_now() + 'No SVG file found')
-                    print(gsyIO.date_time_now() + 'Conversion failed')
+                    pass
+
+                else:
+
+                    root = tk.Tk()
+
+                    # hide tk main window-------------------------------------#
+                    root.withdraw()
+
+                    bool_go = msgbox.askokcancel('inkscape.exe not found',
+                                                 'Inkscape binary not found,'
+                                                 + ' do you want to continue?',
+                                                 icon='warning')
+
+                if bool_go == False:
 
                     return False
 
                 else:
-                    
-                    # save user settings
-                    self.save_setting()
+                
+                    # first part of the shell command
+                    str_inkscape = '"' + self.str_inkscape_dir + os.sep + 'inkscape' + '"'
 
-                    # get the total number of SVG files in the list
-                    int_svg_file_count = len(list_svg_file_path)
+                    # search for SVG files
+                    list_svg_file_path = self.search_svg()
 
-                    # For-Loop through the SVG files and convert to EMF
-                    for item in list_svg_file_path:
+                    # if the list is empty
+                    if not list_svg_file_path:
 
-                        str_svg_file_path = item
+                        gsyIO.prompt_msg(str_title='SVG not found',
+                                        str_msg='No SVG file found',
+                                        str_type='err')
 
-                        # reverse find first path separator
-                        index = str_svg_file_path.rfind(os.sep)
+                        print(gsyIO.date_time_now() + 'No SVG file found')
+                        print(gsyIO.date_time_now() + 'Conversion failed')
 
-                        # get the filename (only) of the SVG file
-                        str_svg_filename = str_svg_file_path[(index + 1):]
-
-                        # find the "." of the SVG extension
-                        index = str_svg_filename.rfind('.')
-
-                        # replace the "svg" for "emf"
-                        str_emf_filename = str_svg_filename[:(index + 1)] + 'emf'
-
-                        # form the full path for the EMF file
-                        str_emf_file_path = os.path.join(self.str_emf_dir, str_emf_filename)
-
-                        # form the shell command
-                        str_cmd = (str_inkscape + ' ' 
-                                + '"' + str_svg_file_path + '"' + ' ' 
-                                + '"' + CONST_EXPT_EMF + str_emf_file_path + '"')
-
-                        # run the shell command, timeout is 10 minutes
-                        obj = subprocess.run(str_cmd, shell=True, timeout=600)
-
-                        # progress bar control
-                        int_count += 1
-
-                        dbl_progress = float(int_count) / float(int_svg_file_count) * 100.0
-
-                        str_info = ('Converting ' + str(int_count) + ' of ' + str(int_svg_file_count)
-                                    + ', ' + '{:.2f}'.format(dbl_progress) + r'%')
-
-                        print(str_info)
-
-                        self.progressBar.setValue(dbl_progress)
-
-                    # open EMF folder on end
-                    if self.checkBox.isChecked() == True:
-
-                        self.open_emf_folder()
+                        return False
 
                     else:
+                        
+                        # save user settings
+                        self.save_setting()
 
-                        pass
+                        # get the total number of SVG files in the list
+                        int_svg_file_count = len(list_svg_file_path)
 
-                    print(gsyIO.date_time_now() + 'Conversion complete')
+                        # For-Loop through the SVG files and convert to EMF
+                        for item in list_svg_file_path:
 
-                    return True
+                            str_svg_file_path = item
+
+                            # reverse find first path separator
+                            index = str_svg_file_path.rfind(os.sep)
+
+                            # get the filename (only) of the SVG file
+                            str_svg_filename = str_svg_file_path[(index + 1):]
+
+                            # find the "." of the SVG extension
+                            index = str_svg_filename.rfind('.')
+
+                            # replace the "svg" for "emf"
+                            str_emf_filename = str_svg_filename[:(index + 1)] + 'emf'
+
+                            # form the full path for the EMF file
+                            str_emf_file_path = os.path.join(self.str_emf_dir, str_emf_filename)
+
+                            # form the shell command
+                            str_cmd = (str_inkscape + ' ' 
+                                    + '"' + str_svg_file_path + '"' + ' ' 
+                                    + '"' + CONST_EXPT_EMF + str_emf_file_path + '"')
+
+                            # run the shell command, timeout is 10 minutes
+                            obj = subprocess.run(str_cmd, shell=True, timeout=600)
+
+                            # progress bar control
+                            int_count += 1
+
+                            dbl_progress = float(int_count) / float(int_svg_file_count) * 100.0
+
+                            str_info = ('Converting ' + str(int_count) + ' of ' + str(int_svg_file_count)
+                                        + ', ' + '{:.2f}'.format(dbl_progress) + r'%'
+                                        + '\n' + '"' + str_svg_file_path + '"' 
+                                        + '\n' + ' to ' 
+                                        + '\n' + '"' + str_emf_file_path + '"' + '\n')
+
+                            print(str_info)
+
+                            self.progressBar.setValue(dbl_progress)
+
+                        # open EMF folder on end
+                        if self.checkBox.isChecked() == True:
+
+                            self.open_emf_folder()
+
+                        else:
+
+                            pass
+
+                        print(gsyIO.date_time_now() + 'Conversion complete')
+
+                        return True
 
         except:
 
-            print(gsyIO.date_time_now() + 'Conversion failed')
+            print(gsyIO.date_time_now() + 'Exception. Conversion failed')
 
             return False
 
@@ -854,6 +941,76 @@ class Ui_SVG2EMF(object):
 
             print(gsyIO.date_time_now() + 'Read user setting failed.')
 
+            return False
+
+    def start_doct(self):
+        '''
+        .. _start_doct :
+
+        This method starts the documentation file with OS default app.
+
+        Parameters
+        ----------
+        self
+
+        Returns
+        -------
+        bool
+            Returns True if documentation file found. Otherwise, returns False.
+
+        Examples
+        --------
+        .. code :: python
+
+            self.help_Documentation.triggered.connect(self.start_doct)
+        '''
+
+        str_doct_filename = CONST_DOCT_FILENAME
+
+        print(gsyIO.date_time_now() + 'The documentation file is "' + str_doct_filename + '"')
+    
+        # find the location of the last ".", just before the extension
+        int_index = str_doct_filename.rfind('.')
+        
+        # form the search pattern
+        # if the last "." is found, get the extension and form the pattern
+        if int_index != (-1):
+            
+            # get the extension
+            str_extn = str_doct_filename[(int_index + 1):]
+            
+            # the pattern is : "./**/*.extension"
+            str_pattern = '.' + os.sep + '**' + os.sep + '*.' + str_extn
+        
+        # if the last "." is not found, set the extension to "*.*"
+        else:
+
+            # the pattern is : "./**/*.*"
+            str_pattern = '.' + os.sep + '**' + os.sep + '*.*'
+
+        print(gsyIO.date_time_now() + 'Looking for the documentation')
+        
+        # function call to start the documentation file
+        bool_found = gsyIO.search_file_and_start(str_pattern, str_doct_filename)
+        
+        if bool_found == True:
+            
+            print(gsyIO.date_time_now() + 'Documentation found')
+            
+            return True
+            
+        else:
+                
+            root = tk.Tk()
+            
+            root.withdraw()
+            
+            msgbox.showerror('File not found', 'Documentation file not found')
+            
+            root.destroy()  
+            
+            print(gsyIO.date_time_now() + 'Documentation not found')
+            
             return False
 
 

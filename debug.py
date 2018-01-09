@@ -4,15 +4,30 @@ Created on Thu Jan  4 13:06:32 2018
 
 """
 
-import gsyIO
+import tkinter as tk
+import tkinter.messagebox as msgbox
 
-str_dir = 'C:/Users'
+root = tk.Tk()
 
-str_pattern = 'gsyBio.rst'
+# hide tk main window-----------------------------------------------------#
+root.withdraw()
 
-list_temp = gsyIO.search_file(str_dir_path=str_dir, str_pattern=str_pattern, bool_recursive=True)
+result = msgbox.askokcancel("Python","Would you like to save the data?", icon='warning')
 
-print(list_temp)
+print(result)
+
+# destroy tk main window--------------------------------------------------#
+root.destroy()
+
+# import gsyIO
+
+# str_dir = 'C:/Users'
+
+# str_pattern = 'gsyBio.rst'
+
+# list_temp = gsyIO.search_file(str_dir_path=str_dir, str_pattern=str_pattern, bool_recursive=True)
+
+# print(list_temp)
 
 # =============================================================================
 # import subprocess
