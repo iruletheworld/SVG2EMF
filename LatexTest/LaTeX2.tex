@@ -1,0 +1,85 @@
+\documentclass[12pt, UTF8]{ctexart}
+%%% to allow custom headings
+\usepackage{titlesec}
+% to change titles font family
+\usepackage{titling}
+
+\usepackage{lmodern}
+
+
+%%% declare fonts and set some formats
+% fontspec to use non-latex with xetex
+\usepackage{xunicode}
+\usepackage{fontspec}
+\usepackage{xltxtra}
+\usepackage{xeCJK}
+
+\setCJKmainfont[BoldFont=文泉驛微米黑, AutoFakeSlant]{KaiTi}
+%\setCJKmainfont{KaiTi}
+\setCJKmonofont{SimSun}
+%\setmainfont{Times New Roman}
+%\setmainfont{Latin Modern Roman 10 Regular}
+
+% font declaration and title settings
+\newfontfamily\headingfont[]{文泉驛微米黑}
+
+\titleformat{\chapter}[display]{\centering\Huge\bfseries\sffamily\headingfont}{第\,\thechapter\,章}{20pt}{\LARGE}
+
+\titleformat*{\section}{\Large\bfseries\sffamily\headingfont}
+\titleformat*{\subsection}{\large\headingfont}
+\renewcommand{\maketitlehooka}{\headingfont}
+
+\title{歡迎來到悲慘世界}
+
+\newcommand{\IMG}{I am God}
+
+\begin{document}
+%\maketitle
+
+\begin{titlepage}
+%	\hrulefill some short text
+	
+	\vspace{0.2cm}
+	\begin{center}
+		{\huge \sffamily{\bfseries 歡迎來到悲慘世界}}
+		
+%		...
+	\end{center}
+
+\end{titlepage}
+
+\part{前言}
+
+前言的正文\%
+
+\chapter{章节}
+
+The title above does not show any font.
+
+\section{字體}
+
+\sffamily
+Works as desired. 
+
+\normalfont
+
+\IMG\ \ \ \  啦啦啦
+
+\rmfamily 
+中文字体。\textsl{中文字體。}\textbf{中文字體。}\LaTeX\ \TeX
+
+\textsc{Applications and nominations are sought for a faculty position in the School of Computing.} The position is targeted for the Zucker Family Graduate Education Center in Charleston, South Carolina. Scope incudes rank of tenured or tenure track Associate or Assistant Professor. Senior applicants are expected to have a nationally recognized record of outstanding scholarship. The ideal candidate will have teaching and research interests in power grid cyber and physical security. Applicants with a strong background in energy analytics, IT-OT, and load and resource forecasting will also be considered. The person filling the position may also hold a joint appointment position with the Holcombe Department of Electrical and Computer Engineering at Clemson.
+
+\subsection{字體}
+
+Hiya! This also shows up as expected.
+
+\subsubsection{Subsubsection}
+
+We have not declared a titleformat for this heading, and so it is shown with the default font.
+
+\section{Second section}
+
+Repeating the success
+
+\end{document} 
