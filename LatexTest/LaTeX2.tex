@@ -1,4 +1,4 @@
-\documentclass[12pt, UTF8]{ctexart}
+\documentclass[12pt, UTF8]{ctexbook}
 %%% to allow custom headings
 \usepackage{titlesec}
 % to change titles font family
@@ -13,6 +13,7 @@
 \usepackage{fontspec}
 \usepackage{xltxtra}
 \usepackage{xeCJK}
+\usepackage{blindtext}
 
 \setCJKmainfont[BoldFont=文泉驛微米黑, AutoFakeSlant]{KaiTi}
 %\setCJKmainfont{KaiTi}
@@ -23,13 +24,17 @@
 % font declaration and title settings
 \newfontfamily\headingfont[]{文泉驛微米黑}
 
-\titleformat{\chapter}[display]{\centering\Huge\bfseries\sffamily\headingfont}{第\,\thechapter\,章}{20pt}{\LARGE}
+%\titleformat{\chapter}[display]
+%{\headingfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+%%\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+
+\titleformat{\chapter}[display]{\centering\Huge\bfseries\headingfont}{第\,\thechapter\,章}{20pt}{\Huge}
 
 \titleformat*{\section}{\Large\bfseries\sffamily\headingfont}
-\titleformat*{\subsection}{\large\headingfont}
+\titleformat*{\subsection}{\large\sffamily\headingfont}
 \renewcommand{\maketitlehooka}{\headingfont}
 
-\title{歡迎來到悲慘世界}
+%\title{歡迎來到悲慘世界}
 
 \newcommand{\IMG}{I am God}
 
@@ -37,11 +42,14 @@
 %\maketitle
 
 \begin{titlepage}
-%	\hrulefill some short text
 	
-	\vspace{0.2cm}
+	\vspace{1cm}
 	\begin{center}
-		{\huge \sffamily{\bfseries 歡迎來到悲慘世界}}
+		{\huge \sffamily{\bfseries{無之優\\} }}
+		
+		\vspace{0.1cm}
+		
+		\Large{\sffamily 誕生於世之傷害}
 		
 %		...
 	\end{center}
@@ -50,9 +58,10 @@
 
 \part{前言}
 
-前言的正文\%
+前言的正文
 
-\chapter{章节}
+\chapter{sth}
+
 
 The title above does not show any font.
 
@@ -68,7 +77,9 @@ Works as desired.
 \rmfamily 
 中文字体。\textsl{中文字體。}\textbf{中文字體。}\LaTeX\ \TeX
 
-\textsc{Applications and nominations are sought for a faculty position in the School of Computing.} The position is targeted for the Zucker Family Graduate Education Center in Charleston, South Carolina. Scope incudes rank of tenured or tenure track Associate or Assistant Professor. Senior applicants are expected to have a nationally recognized record of outstanding scholarship. The ideal candidate will have teaching and research interests in power grid cyber and physical security. Applicants with a strong background in energy analytics, IT-OT, and load and resource forecasting will also be considered. The person filling the position may also hold a joint appointment position with the Holcombe Department of Electrical and Computer Engineering at Clemson.
+\textsc{Applications and nominations are sought for a faculty position in the School of Computing.}
+
+\blindtext
 
 \subsection{字體}
 
@@ -81,5 +92,9 @@ We have not declared a titleformat for this heading, and so it is shown with the
 \section{Second section}
 
 Repeating the success
+
+\chapter{这是个新章}
+
+但是显示不出来
 
 \end{document} 
